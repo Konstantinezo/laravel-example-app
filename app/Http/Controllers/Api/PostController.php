@@ -7,9 +7,21 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class PostController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/posts",
+     *     summary="Получить список постов",
+     *     tags={"Posts"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Успешный ответ"
+     *     )
+     * )
+     */
     public function index()
     {
         return response()->json(Post::latest()->get());
